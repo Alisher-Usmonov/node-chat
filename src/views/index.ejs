@@ -11,13 +11,13 @@
 <div class="container-fluid vh-100 bg-secondary">
     <div class="users bg-secondary p-2">
         <%users.filter(usr => usr.id !== me.id).map(usr => { %> 
-            <a href="/chat/<%=usr.id %>" class="d-block mt-2 w-10 py-3 bg-dark rounded px-2 text-decoration-none text-white shadow"><%=usr.full_name  %> </a>
+            <a href="/chat/<%=usr.id %>" class="d-block mt-2 w-10 py-3 <%=usr.id === id ? "bg-secondary" : "bg-dark" %>  rounded px-2 text-decoration-none text-white shadow"><%=usr.full_name  %> </a>
         <% }) %> 
     </div> 
     <div class="chat bg-primary">
-        <div class="chat-msgs">
+        <div class="chat-msgs p-2">
             <%messages.map(msg => { %>
-                <p><%=msg.text %> </p>
+                <p class="mt-1 shadow rounded bg-light w-50 p-1 px-2"><%=msg.text %> </p>
             <% }) %>  
         </div>
         <form action="/chat/<%=id %>" method="POST" class="field position-fixed bottom-0 left-0 p-1 bg-warning w-100 d-flex gap-1">

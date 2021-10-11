@@ -2,7 +2,7 @@ const router = require("express").Router();
 const fs = require("fs/promises");
 const path = require("path")
 const jwt = require("jsonwebtoken");
-const { generateJWTToken } = require("../modules/jwt");
+const { generateJWTToken, checkJWTToken } = require("../modules/jwt");
 
 router.get("/", (req, res) => {
     res.render("login", {
@@ -35,7 +35,7 @@ router.post("/", async (req, res) => {
             username: db.users[userIndex].username 
         })
 
-        res.cookie("token", token).redirect("/chat/")
+        res.cookie("token", token).redirect(`/chat/${db.users[userIndex].id}`);
 
     } catch(e) {
         res.render("login", {

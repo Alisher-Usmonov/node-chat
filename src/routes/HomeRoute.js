@@ -21,7 +21,6 @@ router.get("/:id", async (req, res) => {
         // message.from = 2 message.to = 1
 
         let messages = db.messages.filter(message => (message.from === req.user.id && message.to === id) || (message.to === req.user.id && message.from === id))
-        console.log(messages);
 
         res.render("index", {
             title: "CHAT",
