@@ -35,7 +35,7 @@ router.post("/", async (req, res) => {
             username: db.users[userIndex].username 
         })
 
-        res.cookie("token", token).redirect("/")
+        res.cookie("token", token).redirect("/chat/")
 
     } catch(e) {
         res.render("login", {

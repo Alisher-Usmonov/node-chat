@@ -1,4 +1,4 @@
-const { sign, verify, JsonWebTokenError } = require("jsonwebtoken")
+const { sign, verify } = require("jsonwebtoken")
 
 module.exports.generateJWTToken = (data) => {
    return sign(data, "SECRET_WORD") 

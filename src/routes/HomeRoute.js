@@ -21,12 +21,14 @@ router.get("/:id", async (req, res) => {
         // message.from = 2 message.to = 1
 
         let messages = db.messages.filter(message => (message.from === req.user.id && message.to === id) || (message.to === req.user.id && message.from === id))
+        console.log(messages);
 
         res.render("index", {
             title: "CHAT",
             messages,
             users: db.users,
-            me: req.user
+            me: req.user,
+            id
         })
 
     } catch(e) {
@@ -36,8 +38,8 @@ router.get("/:id", async (req, res) => {
 
 router.post("/:id", async (req, res) => {
     try {
-        const {id} = req.params;
-        const {text} = req.body;
+        const { id } = req.params;
+        const { text } = req.body;
 
         let dbPath = path.join(__dirname, '..', "db", "db.json");
         let dbFile = await fs.readFile(dbPath, "utf-8");
@@ -45,8 +47,8 @@ router.post("/:id", async (req, res) => {
 
         let message = {
             id: db.messages.length + 1,
-            to: id,
             from: req.user.id,
+            to: parseInt(id),
             text
         }
 
@@ -54,7 +56,7 @@ router.post("/:id", async (req, res) => {
 
         await fs.writeFile(dbPath, JSON.stringify(db))
 
-        res.redirect("/chat")
+        res.redirect("/chat/"+id);
 
     } catch(e) {
         res.render("index", {

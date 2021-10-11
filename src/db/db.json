@@ -1,9 +1,1 @@
-{"users":[{"id":1,"full_name":"Asadbek","username":"asadbek","password":"password"},{"id":2,"full_name":"Asadbek","username":"asadbekz","password":"password"}],"messages":[
-    {
-        "id": 1,
-        "from": 1,
-        "to": 2,
-        "text": "Assalomu alaykum"
-    }
-]}
-
+{"users":[{"id":1,"full_name":"node","username":"node","password":"webscoket"},{"id":2,"full_name":"Nazar","username":"","password":"nodejs5codes"},{"id":3,"full_name":"Nazar","username":"nazar","password":"nazarblogs"}],"messages":[{"id":1,"from":3,"to":1,"text":"Google"}]}

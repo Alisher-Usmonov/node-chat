@@ -1,10 +1,9 @@
-const jwt = require("jsonwebtoken");
 const { checkJWTToken } = require("../modules/jwt");
 
 module.exports = async (req, res, next) => {
     try {
 
-        let token = req.cookies.token;
+        let { token } = req.cookies;
 
         token = checkJWTToken(token)
 

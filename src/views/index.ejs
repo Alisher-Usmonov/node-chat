@@ -1,0 +1,29 @@
+<%-include("partials/header") %> 
+<style>
+    body {
+        overflow: hidden;
+    }
+    .container-fluid {
+        display: grid;
+        grid-template-columns: 20% 80%;
+    }
+</style>
+<div class="container-fluid vh-100 bg-secondary">
+    <div class="users bg-secondary p-2">
+        <%users.filter(usr => usr.id !== me.id).map(usr => { %> 
+            <a href="/chat/<%=usr.id %>" class="d-block mt-2 w-10 py-3 bg-dark rounded px-2 text-decoration-none text-white shadow"><%=usr.full_name  %> </a>
+        <% }) %> 
+    </div> 
+    <div class="chat bg-primary">
+        <div class="chat-msgs">
+            <%messages.map(msg => { %>
+                <p><%=msg.text %> </p>
+            <% }) %>  
+        </div>
+        <form action="/chat/<%=id %>" method="POST" class="field position-fixed bottom-0 left-0 p-1 bg-warning w-100 d-flex gap-1">
+            <input type="text" class="form-control" style="width: 945px;" name="text">
+            <button type="submit" class="btn btn-primary" style="width: 130px;">Send</button>
+        </form>
+    </div>
+</div>
+<%-include("partials/footer") %> 
